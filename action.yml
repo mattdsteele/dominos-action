@@ -1,10 +1,10 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Dominos Action'
+description: 'Orders a 🍕 from Dominos'
+author: 'mattdsteele'
 inputs:
-  myInput:              # change this
+  myInput: # change this
     description: 'input description here'
     default: 'default value if applicable'
 runs:
   using: 'node12'
-  main: 'lib/main.js'
+  main: 'dist/index.js'

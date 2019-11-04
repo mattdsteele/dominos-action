@@ -3,9 +3,10 @@
   "version": "0.0.0",
   "private": true,
   "description": "TypeScript template action",
-  "main": "lib/main.js",
+  "main": "dist/index.js",
   "scripts": {
     "build": "tsc",
+    "dist-prep": "ncc build src/main.ts -o dist",
     "test": "jest"
   },
   "repository": {
@@ -20,14 +21,17 @@
   "author": "YourNameOrOrganization",
   "license": "MIT",
   "dependencies": {
-    "@actions/core": "^1.0.0"
+    "@actions/core": "^1.0.0",
+    "dominos": "^2.1.1"
   },
   "devDependencies": {
     "@types/jest": "^24.0.13",
     "@types/node": "^12.0.4",
+    "@zeit/ncc": "^0.20.5",
     "jest": "^24.8.0",
     "jest-circus": "^24.7.1",
     "ts-jest": "^24.0.2",
+    "ts-node": "^8.4.1",
     "typescript": "^3.5.1"
   }
 }
