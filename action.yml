@@ -4,6 +4,28 @@ author: 'mattdsteele'
 inputs:
   github-token:
     description: 'pass GITHUB_TOKEN here'
+  address:
+    description: 'Address in comma-separated value. Example: 700 Clark Ave, St. Louis, MO, 63102'
+  order-type:
+    description: 'Delivery or Carryout'
+    default: 'Delivery'
+  email:
+    description: 'Email address'
+  phone:
+    description: 'Phone number'
+  first-name:
+    description: 'First Name'
+  last-name:
+    description: 'Last Name'
+  card-number:
+    description: 'CC #'
+  expiration:
+    description: 'Example: 0115 ;//  01/15 just the numbers "01/15"'
+  security-code:
+    description: 'CVV number'
+  card-postal-code:
+    description: 'Postal code for credit card'
+
 runs:
   using: 'node12'
   main: 'dist/index.js'
