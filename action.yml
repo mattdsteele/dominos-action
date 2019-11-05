@@ -3,7 +3,7 @@ description: 'Orders a 🍕 from Dominos'
 author: 'mattdsteele'
 inputs:
   github-token:
-    description: 'pass GITHUB_TOKEN' here
+    description: 'pass GITHUB_TOKEN here'
 runs:
   using: 'node12'
   main: 'dist/index.js'
