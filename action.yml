@@ -2,9 +2,8 @@ name: 'Dominos Action'
 description: 'Orders a 🍕 from Dominos'
 author: 'mattdsteele'
 inputs:
-  myInput: # change this
-    description: 'input description here'
-    default: 'default value if applicable'
+  github-token:
+    description: 'pass GITHUB_TOKEN' here
 runs:
   using: 'node12'
   main: 'dist/index.js'
