@@ -1,6 +1,7 @@
 import api from 'dominos';
 import { PriceResponse } from '../types/PriceResponse';
 import { SuccessfulValidationResponse } from '../types/SuccessfulValidationResponse';
+import { OrderResponse } from '../types/OrderResponse';
 const { Address, Item, Customer, Order, Coupon } = api;
 
 export const standardOrder = (
@@ -95,10 +96,10 @@ export const place = (
 
   if (!active) {
     console.log('not active');
-    return Promise.resolve(order);
+    return Promise.resolve<OrderResponse>(order);
   }
-  return new Promise(res => {
-    order.place(response => {
+  return new Promise<OrderResponse>(res => {
+    order.place((response: OrderResponse) => {
       res(response);
     });
   });

@@ -56,9 +56,35 @@ async function run() {
     );
     console.log('Placed!', active);
     console.log(JSON.stringify(placed));
+
+    if (!active) {
+      console.log('In sandbox mode, hope it worked well!');
+      return;
+    }
+
+    const {
+      EstimatedWaitMinutes,
+      Email,
+      FirstName,
+      LastName
+    } = placed.result.Order;
+    const user = 'nicknisi';
+
     const issue = await github.issues.create({
       title: '🍕 time',
-      body: `# Time to put some content in here. Am I active? ${active}`,
+      body: `
+      ![pizza-drone](https://media.giphy.com/media/HW8qVWQId1aY8/200w_d.gif)
+
+      # Hi @${user}! A 🍕 is on its way to ${FirstName} ${LastName}!
+
+      My pizza algorithm says it should arrive in ${EstimatedWaitMinutes} minutes.
+
+      ** Track the pizza: https://order.dominos.com/orderstorage/GetTrackerData?Phone=${inputs.phone} **
+
+      Email receipt sent to ${Email}.
+
+      Please tip the driver appropriately.
+      `,
       ...context.repo
     });
     console.log(issue.status);
