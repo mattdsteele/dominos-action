@@ -30,10 +30,11 @@ async function run() {
   try {
     const token = core.getInput('github-token', { required: true });
     const inputs = getInputs();
+    const active = core.getInput('active', { required: true }) === 'true';
     const github = new GitHub(token);
     const issue = await github.issues.create({
       title: '🍕 time',
-      body: `# Time to put some content in here.`,
+      body: `# Time to put some content in here. Am I active? ${active}`,
       ...context.repo
     });
     console.log(issue.status);

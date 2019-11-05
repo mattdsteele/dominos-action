@@ -25,6 +25,9 @@ inputs:
     description: 'CVV number'
   card-postal-code:
     description: 'Postal code for credit card'
+  active:
+    description: 'Whether to actually order a pizza'
+    default: 'false'
 
 runs:
   using: 'node12'

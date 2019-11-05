@@ -33,26 +33,16 @@ export const standardOrder = (
   // order.deliveryMethod = 'Delivery';
   // order.storeID = store.ID;
   // delete order.OrderID; // Maybe need to do this?
-  // const pineappleHame = new Item({
-  //     code: '14SCREEN',
-  //     options: ['N', 'H'],
-  //     quantity: 1
-  // });
-  // order.addItem(pineappleHame);
-  order.addItem(
-    new Item({
-      code: '2LCOKE',
-      options: [],
-      quantity: 1
-    })
-  );
+  const largeHawaiian = new Item({
+    code: '14SCREEN',
+    options: ['N', 'H'],
+    quantity: 1
+  });
+  order.addItem(largeHawaiian);
+  //   order.addItem(coke());
 
   // 20% discount
-  order.addCoupon(
-    new Coupon({
-      code: 9214
-    })
-  );
+  //   order.addCoupon(discount());
   return order;
 };
 
@@ -71,3 +61,16 @@ export const price = order => {
     });
   });
 };
+function discount(): any {
+  return new Coupon({
+    code: 9214
+  });
+}
+
+function coke() {
+  return new Item({
+    code: '2LCOKE',
+    options: [],
+    quantity: 1
+  });
+}
