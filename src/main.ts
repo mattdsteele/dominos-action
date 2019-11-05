@@ -1,5 +1,6 @@
 import * as core from '@actions/core';
 import { GitHub, context } from '@actions/github';
+import * as pizza from './pizzapi';
 
 const getInputs = () => {
   const address = core.getInput('address', { required: true });
@@ -32,6 +33,29 @@ async function run() {
     const inputs = getInputs();
     const active = core.getInput('active', { required: true }) === 'true';
     const github = new GitHub(token);
+    const order = pizza.standardOrder(
+      inputs.address,
+      inputs.email,
+      inputs.phone,
+      inputs.firstName,
+      inputs.lastName
+    );
+    const validated = await pizza.validate(order);
+    console.log('Validated');
+    console.log(JSON.stringify(validated));
+    const priced = await pizza.price(order);
+    console.log('Priced');
+    console.log(JSON.stringify(priced));
+    const placed = await pizza.place(
+      order,
+      inputs.cardNumber,
+      inputs.expiration,
+      inputs.securityCode,
+      inputs.cardPostalCode,
+      active
+    );
+    console.log('Placed!', active);
+    console.log(JSON.stringify(placed));
     const issue = await github.issues.create({
       title: '🍕 time',
       body: `# Time to put some content in here. Am I active? ${active}`,
