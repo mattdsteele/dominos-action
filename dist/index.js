@@ -34831,10 +34831,13 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const dominos_1 = __importDefault(__webpack_require__(140));
 const { Address, Item, Customer, Order, Coupon } = dominos_1.default;
-exports.standardOrder = (address, email, phone, firstName, lastName) => {
+exports.standardOrder = (addressStr, email, phone, firstName, lastName) => {
     const store72ndMilitary = 6111;
+    const store72ndJones = 6112;
+    const address = new Address(addressStr);
+    address.Type = 'Business';
     const customer = new Customer({
-        address: new Address(address),
+        address,
         firstName,
         lastName,
         email,
@@ -34842,7 +34845,7 @@ exports.standardOrder = (address, email, phone, firstName, lastName) => {
     });
     const order = new Order({
         customer: customer,
-        storeID: store72ndMilitary,
+        storeID: store72ndJones,
         deliveryMethod: 'Delivery'
     });
     // const largeHawaiian = new Item({
@@ -34850,20 +34853,10 @@ exports.standardOrder = (address, email, phone, firstName, lastName) => {
     //   options: ['N', 'H'],
     //   quantity: 1
     // });
-    // order.addItem(largeHawaiian);
-    //   order.addItem(coke());
-    // Large pizza and brownie
-    order.addCoupon(discount(5908));
     // Large ham
     order.addItem(new Item({
         code: '14SCREEN',
         options: ['H'],
-        quantity: 1
-    }));
-    // Brownie
-    order.addItem(new Item({
-        code: 'MARBRWNE',
-        options: [],
         quantity: 1
     }));
     return order;

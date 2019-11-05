@@ -5,16 +5,19 @@ import { OrderResponse } from '../types/OrderResponse';
 const { Address, Item, Customer, Order, Coupon } = api;
 
 export const standardOrder = (
-  address: string,
+  addressStr: string,
   email: string,
   phone: string,
   firstName: string,
   lastName: string
 ) => {
   const store72ndMilitary = 6111;
+  const store72ndJones = 6112;
+  const address = new Address(addressStr);
+  address.Type = 'Business';
 
   const customer = new Customer({
-    address: new Address(address),
+    address,
     firstName,
     lastName,
     email,
@@ -23,7 +26,7 @@ export const standardOrder = (
 
   const order = new Order({
     customer: customer,
-    storeID: store72ndMilitary,
+    storeID: store72ndJones,
     deliveryMethod: 'Delivery'
   });
 
@@ -33,24 +36,11 @@ export const standardOrder = (
   //   quantity: 1
   // });
 
-  // order.addItem(largeHawaiian);
-  //   order.addItem(coke());
-
-  // Large pizza and brownie
-  order.addCoupon(discount(5908));
   // Large ham
   order.addItem(
     new Item({
       code: '14SCREEN',
       options: ['H'],
-      quantity: 1
-    })
-  );
-  // Brownie
-  order.addItem(
-    new Item({
-      code: 'MARBRWNE',
-      options: [],
       quantity: 1
     })
   );
