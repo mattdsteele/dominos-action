@@ -25,4 +25,4 @@ steps:
 
 ## Parameters
 
-See [](./action.yml) for params and details
+See [action.yml](./action.yml) for params and details
