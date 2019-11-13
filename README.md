@@ -2,6 +2,8 @@
 
 When triggered, will order a pizza for delivery using the [dominos](https://github.com/RIAEvangelist/node-dominos-pizza-api) module
 
+This, uh, [is operational](https://twitter.com/nicknisi/status/1191892290912083969). Some values (like store ID, pizza order, etc) are hardcoded.
+
 ## Usage
 
 ```yml
